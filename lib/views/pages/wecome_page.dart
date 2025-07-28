@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/views/pages/login_page.dart';
 import 'package:flutter_app/views/widget_tree.dart';
-import 'package:lottie/lottie.dart';
 
 import '../widgets/hero_widget.dart';
 
@@ -15,12 +15,8 @@ class WelcomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const HeroWidget(),
-            Lottie.asset(
-              "assets/lotties/lottie_animation.json",
-              width: 200,
-              height: 200,
-            ),
+            const HeroWidget(title: "Welcome Hero"),
+
             FittedBox(
               child: Text(
                 "Welcome to the App!",
@@ -42,19 +38,19 @@ class WelcomePage extends StatelessWidget {
               style: FilledButton.styleFrom(
                 minimumSize: const Size(double.infinity, 50),
               ),
-              child: const Text("Login"),
+              child: const Text("Get Started"),
             ),
             TextButton(
               onPressed: () {
-                Navigator.pushReplacement(
+                Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => WidgetTree()),
+                  MaterialPageRoute(builder: (context) => LoginPage()),
                 );
               },
-              child: const Text("Login"),
               style: TextButton.styleFrom(
                 minimumSize: const Size(double.infinity, 50),
               ),
+              child: const Text("Login"),
             ),
           ],
         ),
