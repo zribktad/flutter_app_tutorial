@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/views/pages/login_page.dart';
+import 'package:flutter_app/views/pages/onboarding_page.dart';
 
 import '../widgets/hero_widget.dart';
 
@@ -33,9 +34,7 @@ class WelcomePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => LoginPage(title: "Register"),
-                      ),
+                      MaterialPageRoute(builder: (context) => OnboardingPage()),
                     );
                   },
                   style: FilledButton.styleFrom(
