@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 
+class KConstants {
+  static const String appName = "Flutter App";
+  static const String welcomeMessage = "Welcome to the Flutter App!";
+  static const String themeModeKey = "themeModeKey";
+}
+
 class KTextStyles {
   static const TextStyle heading = TextStyle(
     fontSize: 24,

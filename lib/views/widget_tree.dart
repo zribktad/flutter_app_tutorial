@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/data/constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_app/data/notifiers.dart';
 import 'package:flutter_app/views/pages/home_page.dart';
 import 'package:flutter_app/views/pages/profile_page.dart';
@@ -21,8 +23,14 @@ class WidgetTree extends StatelessWidget {
         title: Text("Flutter App with Yellow Accent Color"),
         actions: [
           IconButton(
-            onPressed: () {
+            onPressed: () async {
               isDarkModeNotifier.value = !isDarkModeNotifier.value;
+              // Save the theme mode preference
+              final sharedPreferences = await SharedPreferences.getInstance();
+              await sharedPreferences.setBool(
+                KConstants.themeModeKey,
+                isDarkModeNotifier.value,
+              );
             },
             icon: ValueListenableBuilder(
               valueListenable: isDarkModeNotifier,

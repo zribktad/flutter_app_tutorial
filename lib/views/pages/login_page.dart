@@ -1,11 +1,11 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_app/views/widget_tree.dart';
 import 'package:flutter_app/views/widgets/hero_widget.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({super.key, required this.title});
+
+  final String title;
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -14,8 +14,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  String confirmPassword = "1234";
-  String confirmEmail = "@";
+  String confirmPassword = "";
+  String confirmEmail = "";
 
   @override
   void initState() {
@@ -38,44 +38,49 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Login")),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            HeroWidget(title: "Login Hero"),
-            SizedBox(height: 20),
-            TextField(
-              controller: emailController,
-              decoration: InputDecoration(
-                labelText: 'email',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+      appBar: AppBar(),
+      body: Center(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: [
+                HeroWidget(title: "${widget.title} Hero"),
+                SizedBox(height: 20),
+                TextField(
+                  controller: emailController,
+                  decoration: InputDecoration(
+                    labelText: 'email',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                  ),
+                  onEditingComplete: () => setState(() {}),
                 ),
-              ),
-              onEditingComplete: () => setState(() {}),
-            ),
-            TextField(
-              controller: passwordController,
-              decoration: InputDecoration(
-                hintText: 'Password',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                TextField(
+                  controller: passwordController,
+                  decoration: InputDecoration(
+                    hintText: 'Password',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                  ),
+                  onEditingComplete: () => setState(() {}),
                 ),
-              ),
-              onEditingComplete: () => setState(() {}),
+                SizedBox(height: 20),
+                FilledButton(
+                  onPressed: () {
+                    onLoginButtonPressed(context);
+                  },
+                  style: FilledButton.styleFrom(
+                    minimumSize: const Size(double.infinity, 50),
+                  ),
+                  child: Text(widget.title),
+                ),
+                SizedBox(height: 50),
+              ],
             ),
-            SizedBox(height: 20),
-            FilledButton(
-              onPressed: () {
-                onLoginButtonPressed(context);
-              },
-              style: FilledButton.styleFrom(
-                minimumSize: const Size(double.infinity, 50),
-              ),
-              child: const Text("Get Started"),
-            ),
-          ],
+          ),
         ),
       ),
     );
@@ -84,9 +89,10 @@ class _LoginPageState extends State<LoginPage> {
   void onLoginButtonPressed(BuildContext context) {
     if (emailController.text == confirmEmail &&
         passwordController.text == confirmPassword) {
-      Navigator.pushReplacement(
+      Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => WidgetTree()),
+        (route) => false,
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
