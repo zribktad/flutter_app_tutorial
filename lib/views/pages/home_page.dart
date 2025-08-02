@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/data/constants.dart';
 import 'package:flutter_app/views/pages/cource_page.dart';
-import 'package:flutter_app/views/pages/onboarding_page.dart';
 import 'package:flutter_app/views/widgets/container_widget.dart';
 import 'package:flutter_app/views/widgets/hero_widget.dart';
 
@@ -15,10 +14,14 @@ class HomePage extends StatelessWidget {
       KValue.cleanUi,
       KValue.fixBugs,
       KValue.KeyConcept,
+      KValue.basicLayout,
+      KValue.cleanUi,
+      KValue.fixBugs,
+      KValue.KeyConcept,
     ];
 
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(10.0),
       child: SingleChildScrollView(
         child: Column(
           children: [
