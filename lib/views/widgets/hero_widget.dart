@@ -23,22 +23,27 @@ class HeroWidget extends StatelessWidget {
         children: [
           Hero(
             tag: "hero-image",
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Image.asset(
-                    "assets/images/bg.jpg",
-                    color: Colors.blue,
-                    colorBlendMode: BlendMode.darken,
-                  ),
-                  Lottie.asset(
-                    "assets/lotties/lottie_animation2.json",
-                    width: 200,
-                    height: 200,
-                  ),
-                ],
+            child: AspectRatio(
+              aspectRatio: 1920 / 1080,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Image.asset(
+                      "assets/images/bg.jpg",
+                      fit: BoxFit.cover,
+                      color: Colors.blue,
+                      colorBlendMode: BlendMode.darken,
+                    ),
+                    Lottie.asset(
+                      "assets/lotties/lottie_animation2.json",
+                      fit: BoxFit.cover,
+                      width: 200,
+                      height: 200,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

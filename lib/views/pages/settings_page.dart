@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/views/pages/expanded_flexible_page.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key, required this.title});
@@ -168,9 +169,14 @@ class _SettingPageState extends State<SettingPage> {
                 style: ElevatedButton.styleFrom(),
                 onPressed: () {
                   // Handle button press
-                  print("Button pressed");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ExpandedFlexiblePage(),
+                    ),
+                  );
                 },
-                child: Text("Submit"),
+                child: Text("Show Flexible and Expanded"),
               ),
               FilledButton(
                 style: ElevatedButton.styleFrom(),
